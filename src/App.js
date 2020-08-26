@@ -73,9 +73,11 @@ const App = () => {
 
       try {
         const obj = (typeof e.data === 'object' ? e.data : JSON.parse(e.data))
+        console.log(obj)
         switch (obj.type) {
           
           
+
           case 'MSG_ENTITY_SELECTED':
           //改變物件變色
           msgSetEntityColor(iframeWindow, [
@@ -137,6 +139,7 @@ const App = () => {
       <button onClick={() => msgViewSnapShot(iframeWindow,tempShot)}>回復上一視角ViewSnapShot</button>
       </Btn>
       </Wrapper> 
+      
       {/*新增第二個模型視窗
       <Iframe
         ref={iframeWindow}

@@ -69,3 +69,4 @@ export function msgToggleSection(iframeWindow, state) {
 export function msgIsPointVisibal(iframeWindow,x,y,z){
   postMessage(iframeWindow.current, 'MSG_IS_POINT_VISIBLE',{point: [x, y, z]})
 }
+
