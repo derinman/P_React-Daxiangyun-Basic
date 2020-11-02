@@ -8,7 +8,9 @@ import {addIframeListener,
       } from './utility/bimHandler.js'
 
       import {msgSetEntityColor,
-        msgSetBackgroundColor
+              msgSetBackgroundColor,
+              msgSetSelectionDisplayMode,
+              msgTakeSnapShot
       } from './utility/daxiangyun.js'
 
 import {randColor} from './utility/helper.js'
@@ -34,6 +36,7 @@ const App = () => {
   
   const iframeRef = useRef();
   const [ selectId,setSelectId ] = useState('')
+  const [ nonSelectTransparent, setNonSelectTransparent] = useState(false)
 
   const selectIdHandler = (e) => {
     if (e.origin !== process.env.REACT_APP_VIEWER_SERVER_HOST) return;
@@ -42,6 +45,11 @@ const App = () => {
     if(obj.type === 'MSG_ENTITY_SELECTED'){
       setSelectId(obj.data.selectionIds[0])
     }   
+  }
+
+  const nonSelectTransparentHandler=()=>{
+    setNonSelectTransparent(c=>!c)
+    msgSetSelectionDisplayMode(iframeRef,nonSelectTransparent?0.5:1)
   }
 
   useEffect(() => {
@@ -62,12 +70,22 @@ const App = () => {
         <button 
           onClick={() => msgSetEntityColor(iframeRef,selectId,[randColor(),randColor(),randColor()])}
         >
-          改模型顏色
+          改選中模型顏色
         </button>
         <button 
           onClick={() => msgSetBackgroundColor(iframeRef,[randColor(),randColor(),randColor()])}
         >
           改背景顏色
+        </button>
+        <button 
+          onClick={nonSelectTransparentHandler}
+        >
+          非選中實體半透明 {nonSelectTransparent?'開啟':'關閉'}
+        </button>
+        <button 
+          onClick={() => msgTakeSnapShot(iframeRef)}
+        >
+          生成快照
         </button>
       </BtnWrapper>
       <Iframe

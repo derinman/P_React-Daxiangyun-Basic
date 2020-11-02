@@ -19,11 +19,16 @@ function msgSetEntityColor(iframeWindow,id,color){
 
 //改背景顏色
 function msgSetBackgroundColor(iframeWindow,color){
-  postMessage(iframeWindow.current, 'MSG_SET_BACKGROUND',{color: [color[0]/255,color[1]/255,color[2]/255] })}
+  postMessage(
+    iframeWindow.current, 
+    'MSG_SET_BACKGROUND',
+    {color: [color[0]/255,color[1]/255,color[2]/255] }
+    )
+}
 
 //非選中實體半透明
-function msgSetSelectionDisplayMode(iframeWindow){
-  postMessage(iframeWindow.current, 'MSG_SET_SELECTION_DISPLAY_MODE', {"mode": 1,"transparency": 0.5})
+function msgSetSelectionDisplayMode(iframeWindow,transparency){
+  postMessage(iframeWindow.current, 'MSG_SET_SELECTION_DISPLAY_MODE', {"mode": 1,"transparency": transparency})
 }
 
 //拍照
@@ -73,5 +78,7 @@ function msgIsPointVisibal(iframeWindow,x,y,z){
 
 export {
   msgSetEntityColor,
-  msgSetBackgroundColor
+  msgSetBackgroundColor,
+  msgSetSelectionDisplayMode,
+  msgTakeSnapShot
 }

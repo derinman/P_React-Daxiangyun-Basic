@@ -27,8 +27,7 @@ const onMessageReceivedFromIframe = (e) => {
             break
         //模型拍照功能
         case 'MSG_SNAPSHOT_CAPTURED':
-          //setTempShot(obj.data.status);
-          //console.log(tempShot);
+            console.log(obj.data.status);
             break
         default:
             break
