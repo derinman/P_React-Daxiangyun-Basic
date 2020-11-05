@@ -32,8 +32,8 @@ function msgSetSelectionDisplayMode(iframeWindow,transparency){
 }
 
 //拍照
-function msgTakeSnapShot(iframeWindow){
-  postMessage(iframeWindow.current, 'MSG_TAKE_SNAPSHOT',{id: '自設快照1'})
+function msgTakeSnapShot(iframeWindow, arr ){
+  postMessage(iframeWindow.current, 'MSG_TAKE_SNAPSHOT',{id: `photo_${arr.length}`})
 }
 
 //回到某一鏡頭，跳轉至某視角
@@ -80,5 +80,6 @@ export {
   msgSetEntityColor,
   msgSetBackgroundColor,
   msgSetSelectionDisplayMode,
-  msgTakeSnapShot
+  msgTakeSnapShot,
+  msgViewSnapShot
 }

@@ -25,10 +25,6 @@ const onMessageReceivedFromIframe = (e) => {
             break
         case 'MSG_MODEL_TREE_READY':
             break
-        //模型拍照功能
-        case 'MSG_SNAPSHOT_CAPTURED':
-            console.log(obj.data.status);
-            break
         default:
             break
         }
