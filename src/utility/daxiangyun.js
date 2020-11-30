@@ -17,6 +17,20 @@ function msgSetEntityColor(iframeWindow,id,color){
   )
 }
 
+//改顏色(半透明)
+function msgSetEntityTransparent(iframeWindow,id,color){
+  postMessage(
+    iframeWindow.current, 
+    'MSG_SET_ENTITY_STATE',
+    {
+    states: [ [id,[color[0]/256,color[1]/256,color[2]/256]] ],
+    useState: true,
+		defaultStateColor: [],//未被選實體
+    useDefaultStateColor: false,//未被選實體
+    }
+  )
+}
+
 //改背景顏色
 function msgSetBackgroundColor(iframeWindow,color){
   postMessage(

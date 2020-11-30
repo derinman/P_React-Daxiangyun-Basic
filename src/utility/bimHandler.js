@@ -8,11 +8,7 @@ const onMessageReceivedFromIframe = (e) => {
         //console.log(obj)
         switch (obj.type) {
             case 'MSG_ENTITY_SELECTED':
-            //改變物件變色
-            /*msgSetEntityColor(iframeWindow, [
-            [obj.data.selectionIds[0], [49/255,200/255,248/255]],
-            ]);*/
-            //console.log(obj.data.selectionIds[0]);
+            console.log(obj.data.selectionIds[0]);
             break
         case 'MSG_CAMERA_CHANGE':
             //console.log('相機在轉');
